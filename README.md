@@ -1,4 +1,7 @@
-#Here ar e the steps i took to set up an Ubuntu Web Server with Apache and SSL on AWS
+## Project Overview
+
+This project involves deploying a *web server (Apache)* on an *AWS EC2 instance, installing the Apache web server, deploying an HTML page, and configuring networking for external access. The setup was performed using my **local terminal* instead of the EC2 instance's terminal.
+
 
 ## Step 1: Log in to AWS
 First, I logged into my AWS Console using my ROOT user credentials.
@@ -94,7 +97,7 @@ run the following command
 follow the prompt and enter email 
 
 
-## Step 11: Verify SSL certificate
+## Step 10: Verify SSL certificate
 
 Tested to ensure SSL was correctly assigned to my domain.
 
