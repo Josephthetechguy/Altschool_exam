@@ -22,7 +22,6 @@ Using my terminal, I connected to the instance with SSH.
 2. Used this command:
   % ssh -i "Ec2 key.pem" ubuntu@ec2-34-201-76-147.compute-1.amazonaws.com
 
- ![ssh connection](./img/sshconnection.png)
 
 ## Next is to Update and Upgrade the Instance
 i was Logged in as Ubuntu user, then switched to the root user:
@@ -34,13 +33,12 @@ i was Logged in as Ubuntu user, then switched to the root user:
 Upgrade the Instance for recent versions
 
  %    Apt upgrade -y
- ![Instance update](./img/instanceupdat.png)
 
 ## Step 5: Install Apache
 Installed the Apache2 web server:
 
  % apt install apache2
- ![APache insatall](./img/installapache.png)
+ 
 
  ## Step 6: Start and Enable Apache
 After installing Apache2 we need to enable it and then check the status.
@@ -48,14 +46,11 @@ After installing Apache2 we need to enable it and then check the status.
  %  systemctl start apache2
  %  systemctl enable apache2
 
-
- ![APache status](./img/Apachestatus.png) 
-
  we can see our server is running and active
 
 you can also confirm by going to your aws to copy your public ipv4 address and pasting it on a browser.
 
-! [browsertest](./img/brosweripv4test.png)
+
 
 
 make sure you change the protocol to http else you'll get an error.
@@ -64,7 +59,6 @@ e.g  [http://https://34.201.76.147/] not (https://34.201.76.147/)
 
 
 if everything is done right you should see something like this.
-![apache welcome page](./img/apachelandingpage.png)
 
 
 ## step 7:Replace Default Index.html
@@ -77,7 +71,7 @@ list file
 % ls  
 
 Edit the index.html file
-% vi index.html
+% nano index.html
 
 paste the content of your own web page in this index.html file or simply delete and create your own index.html
 
@@ -94,28 +88,18 @@ and configureed my public ipv4 address to my registred domain
 run the following command
 %  sudo apt install certbot python3-certbot-apache -y
 
-![certbot installation](./img/certbotinstall.png)
 
 % sudo cerbot --apache
 
 follow the prompt and enter email 
-
-![certbotapache ](./img/certbot%20apache.png)
-
-
 
 
 ## Step 11: Verify SSL certificate
 
 Tested to ensure SSL was correctly assigned to my domain.
 
-![ssl-certificate](./img/ssl-certificate.png)
-
-
 After completeing the steps 
 
 Apache was running with my  custom  index.html landing page.
 SSL was successfully installed and verified.
 My web server was accessible via the custom domain at https://web.yomi1.mooo.com/.
-
-![landing page](./img/landingpage.png)
