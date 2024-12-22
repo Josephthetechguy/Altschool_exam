@@ -26,7 +26,7 @@ Using my terminal, I connected to the instance with SSH.
 2. Used this command:
   % ssh -i "Ec2 key.pem" ubuntu@ec2-34-201-76-147.compute-1.amazonaws.com
 
-![connecting to instance](./instance%20ssh.png)
+![connecting to instance](./instance%20running%20with%20ssh.png)
 
 ## Next is to Update and Upgrade the Instance
 i was Logged in as Ubuntu user, then switched to the root user:
