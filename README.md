@@ -16,7 +16,7 @@ First, I logged into my AWS Console using my ROOT user credentials.
   - **Port 80** http from anywhere
   - **Port 443** https from anywhere
  
- ![instance running on web browser](./instance.png)
+
 ---
 
 ## Step 3: Connect to the Instance
@@ -25,7 +25,6 @@ Using my terminal, I connected to the instance with SSH.
 1. Navigated to the folder where my downloaded key pair was saved.
 2. Used this command:
   % ssh -i "Ec2 key.pem" ubuntu@ec2-34-201-76-147.compute-1.amazonaws.com
-![connecting to instance](./instance%20ssh.png)
 
 ## Next is to Update and Upgrade the Instance
 i was Logged in as Ubuntu user, then switched to the root user:
@@ -42,7 +41,7 @@ Upgrade the Instance for recent versions
 Installed the Apache2 web server:
 
  % apt install apache2
-![Installing apache](./apache%20running.png) 
+
 
  ## Step 6: Start and Enable Apache
 After installing Apache2 we need to enable it and then check the status.
@@ -52,9 +51,7 @@ After installing Apache2 we need to enable it and then check the status.
 
  we can see our server is running and active
 
-you can also confirm by going to your aws to copy your public ipv4 address and pasting it on a browser.
-
-![Apache runnig](./apache%20running.png)
+you can also confirm by going to your aws to copy your public ipv4 address and pasting it on a browser
 
 
 make sure you change the protocol to http else you'll get an error.
@@ -78,14 +75,12 @@ Edit the index.html file
 % nano index.html
 
 paste the content of your own web page in this index.html file or simply delete and create your own index.html
-![editing index.html file](./nano.png)
+
 
 ## Step 8: Create a Domain
 Registered a free domain using afraid.dns.
 
 and configureed my public ipv4 address to my registred domain
-
-![creating a domain](./domain.png)
 
 ## Step 9: Install Certbot for SSL
 
@@ -97,17 +92,15 @@ run the following command
 
 follow the prompt and enter email 
 
-i![Installing cert bot](./cert%20bot.png)
 
 
 ## Step 10: Verify SSL certificate
 
-Tested to ensure SSL was correctly assigned to my domain.
-![SSL certificate deployed](./ssl%20cert.png)
+Tested to ensure SSL was correctly assigned to my domain
 
 After completeing the steps 
 
 Apache was running with my  custom  index.html landing page.
 SSL was successfully installed and verified.
 My web server was accessible via the custom domain at https://web.yomi1.mooo.com/.
-![Landing page](./Landing%20page.png)
+
