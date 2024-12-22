@@ -1,73 +1,121 @@
-# AltExam
+#Here ar e the steps i took to set up an Ubuntu Web Server with Apache and SSL on AWS
 
-Altschool Second Semester Examination Project
+## Step 1: Log in to AWS
+First, I logged into my AWS Console using my ROOT user credentials.
 
-**Documentation**: Provisioning the Server, Installing the Web Server, 
-Deploying the HTML Page, and Configuring Networking
+---
 
-## Steps Taken to Set Up an Ubuntu Web Server with Apache
+## Step 2: Launch an EC2 Instance
+- I launched an Ubuntu t2.micro instance.
+- Created a new key pair.
+- Configured the security group inbound rules to allow:
+  - **Port 22** ssh from my ip
+  - **Port 80** http from anywhere
+  - **Port 443** https from anywhere
 
-### Step 1: Provisioning the Server
+---
 
-1. Logged in to AWS using my IAM user credentials.
-2. Created a new EC2 instance named "ALTSCHOOL" and started the instance.
-3. Downloaded the key pair for the instance and noted its location on my 
-local machine.
-4. Configured the security group inbound rules to allow:
-   - Port 22 (SSH) from my IP address
-   - Port 80 (HTTP) from anywhere
+## Step 3: Connect to the Instance
+Using my terminal, I connected to the instance with SSH.
 
-### Step 2: Connecting to the Server
+1. Navigated to the folder where my downloaded key pair was saved.
+2. Used this command:
+  % ssh -i "Ec2 key.pem" ubuntu@ec2-34-201-76-147.compute-1.amazonaws.com
 
-1. Opened the EC2 terminal and connected to the EC2 instance via SSH:
-   ```bash
-   ssh -i "MY_EC2_KEY.pem" ubuntu@34.201.76.147
-   ```
-   
-### Step 3: Updating the Server
-1. Updated and upgraded the server packages:
-```
-sudo apt update && sudo apt upgrade -y
-```
-2. Gained root privileges:
-```
-sudo su
-```
+ ![ssh connection](./img/sshconnection.png)
 
-### Step 4: Installing the Web Server
-1. Installed Apache2 on the Ubuntu instance:
-```
-apt install apache2 -y
-```
-2. Started and enabled the Apache2 service:
-```
-systemctl start apache2
-systemctl enable apache2
-```
-3. You can also confirm by going to your AWS console, copying your public IPv4 address, and pasting it into a browser:
--Make sure you change the protocol to http, else you’ll get an error.
--Example URL: http://34.201.76.147
+## Next is to Update and Upgrade the Instance
+i was Logged in as Ubuntu user, then switched to the root user:
 
-### Step 5: Deploying the HTML Page
-1. Navigated to the web server’s root directory:
-```
-cd /var/www/html
-```
-2. Added my custom HTML file (index.html) to the directory:
-```
-nano index.html
-```
-3. Saved and exited the editor to deploy the page.
-   
-### Step 6: Configuring Networking
-1. Accessed freedns.afraid.org to configure a DNS record for the server’s public IP address.
-2. Created a free subdomain and mapped it to the EC2 instance’s public IP.
-   
-### Step 7: Testing the Deployment
-1. Accessed the website using the configured subdomain in a web browser to confirm the deployment was successful.
-2. Tested to ensure SSL was correctly assigned to my domain. Apache was running with my custom index.html landing page. SSL was successfully installed and verified.
-3. My web server was accessible via the custom domain at:
-https://web.yomi1.mooo.com
+ %   sudo su
 
-@ Joseph Toba Omoyeni / ALT/SOE/024/1259
-   
+ %   Apt update 
+
+Upgrade the Instance for recent versions
+
+ %    Apt upgrade -y
+ ![Instance update](./img/instanceupdat.png)
+
+## Step 5: Install Apache
+Installed the Apache2 web server:
+
+ % apt install apache2
+ ![APache insatall](./img/installapache.png)
+
+ ## Step 6: Start and Enable Apache
+After installing Apache2 we need to enable it and then check the status.
+
+ %  systemctl start apache2
+ %  systemctl enable apache2
+
+
+ ![APache status](./img/Apachestatus.png) 
+
+ we can see our server is running and active
+
+you can also confirm by going to your aws to copy your public ipv4 address and pasting it on a browser.
+
+! [browsertest](./img/brosweripv4test.png)
+
+
+make sure you change the protocol to http else you'll get an error.
+
+e.g  [http://https://34.201.76.147/] not (https://34.201.76.147/) 
+
+
+if everything is done right you should see something like this.
+![apache welcome page](./img/apachelandingpage.png)
+
+
+## step 7:Replace Default Index.html
+run the following command below.
+
+Navigavte to the html directory
+%  cd /var/www/html 
+
+list file 
+% ls  
+
+Edit the index.html file
+% vi index.html
+
+paste the content of your own web page in this index.html file or simply delete and create your own index.html
+
+## Step 8: Create a Domain
+Registered a free domain using afraid.dns.
+
+and configureed my public ipv4 address to my registred domain
+
+
+
+
+## Step 9: Install Certbot for SSL
+
+run the following command
+%  sudo apt install certbot python3-certbot-apache -y
+
+![certbot installation](./img/certbotinstall.png)
+
+% sudo cerbot --apache
+
+follow the prompt and enter email 
+
+![certbotapache ](./img/certbot%20apache.png)
+
+
+
+
+## Step 11: Verify SSL certificate
+
+Tested to ensure SSL was correctly assigned to my domain.
+
+![ssl-certificate](./img/ssl-certificate.png)
+
+
+After completeing the steps 
+
+Apache was running with my  custom  index.html landing page.
+SSL was successfully installed and verified.
+My web server was accessible via the custom domain at https://web.yomi1.mooo.com/.
+
+![landing page](./img/landingpage.png)
