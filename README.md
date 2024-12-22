@@ -25,6 +25,7 @@ Using my terminal, I connected to the instance with SSH.
 1. Navigated to the folder where my downloaded key pair was saved.
 2. Used this command:
   % ssh -i "Ec2 key.pem" ubuntu@ec2-34-201-76-147.compute-1.amazonaws.com
+
 ![connecting to instance](./instance%20ssh.png)
 
 ## Next is to Update and Upgrade the Instance
@@ -110,4 +111,5 @@ After completeing the steps
 Apache was running with my  custom  index.html landing page.
 SSL was successfully installed and verified.
 My web server was accessible via the custom domain at https://web.yomi1.mooo.com/.
+
 ![Landing page](./index.html)
