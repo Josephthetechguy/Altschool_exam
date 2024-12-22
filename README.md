@@ -112,4 +112,4 @@ Apache was running with my  custom  index.html landing page.
 SSL was successfully installed and verified.
 My web server was accessible via the custom domain at https://web.yomi1.mooo.com/.
 
-![Landing page](./index.html)
+![Landing page](./Landing%20page.png)
